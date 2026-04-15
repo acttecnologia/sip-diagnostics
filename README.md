@@ -129,6 +129,10 @@ O script é totalmente interativo. Ao iniciar, ele solicita:
   [✔] INVITE 200 OK — chamada estabelecida
 ```
 
+### NAT Traversal
+
+O script trata NAT automaticamente usando `rport;alias` no cabeçalho Via do SIP (via `sipsak`), permitindo que o servidor SIP preencha o IP público e a porta corretos sem necessidade de configuração manual.
+
 ### Detecção de fail2ban
 
 O script detecta quando o IP foi banido pelo fail2ban do servidor Asterisk (manifesta-se como "Connection refused" nas respostas SIP) e exibe aviso específico. Delays foram calibrados entre os blocos de teste para evitar o acionamento do ban durante a execução.
@@ -142,6 +146,10 @@ sip_report_20250414_143022.txt
 ```
 
 Pode ser enviado diretamente por e-mail ou WhatsApp para análise remota.
+
+### Observações sobre RTP / Jitter
+
+A medição de jitter usa `avg - min` de RTT (em vez de `max - min`) como proxy mais estável, resistente a outliers causados pelo rate limiting de ICMP do sistema operacional (`net.ipv4.icmp_ratelimit`). A "perda" UDP na porta RTP pode aparecer alta (30–80%) em servidores que limitam respostas ICMP Port Unreachable — isso **não** indica perda real no fluxo RTP.
 
 ---
 
