@@ -1,4 +1,4 @@
-# 🔧 ACT Tecnologia — SIP Diagnostic Tool
+# 🔧 ACT Tecnologia - SIP Diagnostic Tool
 
 <div align="center">
 
@@ -35,10 +35,10 @@ A ferramenta detecta e analisa:
 | 🌐 **Baseline de rede** | Ping para gateway, Google (8.8.8.8), Cloudflare (1.1.1.1), ACT Cloud (187.110.160.254) e servidor SIP |
 | 📡 **Conectividade ICMP** | Ping com análise de perda e jitter |
 | 🔌 **Porta SIP** | Verificação de acesso UDP/5060 via nmap |
-| 🎵 **Qualidade RTP** | Simulação de tráfego UDP na porta RTP com hping3 — mede perda e jitter real |
+| 🎵 **Qualidade RTP** | Simulação de tráfego UDP na porta RTP com hping3, medindo perda e jitter real |
 | 🤝 **Handshake SIP** | Envio de SIP OPTIONS e análise de resposta |
 | 🔑 **Registro SIP** | REGISTER com usuário, senha e expiração configurável |
-| 📞 **Chamada teste** | INVITE para ramal de eco `*43` — verifica sinalização fim-a-fim |
+| 📞 **Chamada teste** | INVITE para ramal de eco `*43`, verificando sinalização fim a fim |
 | ⏱ **Persistência** | Monitoramento contínuo com OPTIONS periódicos durante N minutos |
 | 🛣 **Traceroute** | Mapeamento do caminho de rede até o servidor SIP |
 | 📄 **Relatório TXT** | Exportação automática do resultado completo para arquivo |
@@ -48,9 +48,9 @@ A ferramenta detecta e analisa:
 ### Níveis de Teste
 
 ```
-[1] Básico    — Ping + Porta SIP + SIP OPTIONS
-[2] Médio     — Básico + Baseline + RTP/Jitter + Traceroute
-[3] Completo  — Médio + REGISTER + INVITE + Persistência + TLS
+[1] Básico    - Ping + Porta SIP + SIP OPTIONS
+[2] Médio     - Básico + Baseline + RTP/Jitter + Traceroute
+[3] Completo  - Médio + REGISTER + INVITE + Persistência + TLS
 ```
 
 ### Pré-requisitos
@@ -77,14 +77,14 @@ chmod +x sip_test.sh
 
 O script é totalmente interativo. Ao iniciar, ele solicita:
 
-1. **Idioma** — Português ou English
-2. **IP do servidor SIP** — ex: `187.110.160.184`
-3. **Porta SIP** — padrão `5060`
-4. **Nível de teste** — 1 (Básico), 2 (Médio) ou 3 (Completo)
-5. **Duração do teste de persistência** — padrão 300 segundos
-6. **Credenciais SIP** — usuário, senha e domínio (opcional, necessário para REGISTER/INVITE)
-7. **Destino da chamada teste** — padrão `*43` (ramal de eco padrão Asterisk)
-8. **Gerar relatório TXT** — salvo com timestamp no diretório atual
+1. **Idioma** - Português ou English
+2. **IP do servidor SIP** - ex: `187.110.160.184`
+3. **Porta SIP** - padrão `5060`
+4. **Nível de teste** - 1 (Básico), 2 (Médio) ou 3 (Completo)
+5. **Duração do teste de persistência** - padrão 300 segundos
+6. **Credenciais SIP** - usuário, senha e domínio (necessário para REGISTER/INVITE)
+7. **Destino da chamada teste** - padrão `*43` (ramal de eco padrão Asterisk)
+8. **Gerar relatório TXT** - salvo com timestamp no diretório atual
 
 ### Exemplo de Saída
 
@@ -115,7 +115,7 @@ O script é totalmente interativo. Ao iniciar, ele solicita:
 ══════════════════════════════════════════════
   Teste SIP OPTIONS
 ══════════════════════════════════════════════
-  [✔] SIP OPTIONS respondido — servidor ativo
+  [✔] SIP OPTIONS respondido, servidor ativo
   [→] Resposta: 200 OK
 
 ══════════════════════════════════════════════
@@ -126,7 +126,7 @@ O script é totalmente interativo. Ao iniciar, ele solicita:
 ══════════════════════════════════════════════
   Teste de Chamada INVITE (*43)
 ══════════════════════════════════════════════
-  [✔] INVITE 200 OK — chamada estabelecida
+  [✔] INVITE 200 OK, chamada estabelecida
 ```
 
 ### NAT Traversal
@@ -149,7 +149,7 @@ Pode ser enviado diretamente por e-mail ou WhatsApp para análise remota.
 
 ### Observações sobre RTP / Jitter
 
-A medição de jitter usa `avg - min` de RTT (em vez de `max - min`) como proxy mais estável, resistente a outliers causados pelo rate limiting de ICMP do sistema operacional (`net.ipv4.icmp_ratelimit`). A "perda" UDP na porta RTP pode aparecer alta (30–80%) em servidores que limitam respostas ICMP Port Unreachable — isso **não** indica perda real no fluxo RTP.
+A medição de jitter usa `avg - min` de RTT (em vez de `max - min`) como proxy mais estável, resistente a outliers causados pelo rate limiting de ICMP do sistema operacional (`net.ipv4.icmp_ratelimit`). A "perda" UDP na porta RTP pode aparecer alta (30-80%) em servidores que limitam respostas ICMP Port Unreachable. Isso **não** indica perda real no fluxo RTP.
 
 ---
 
@@ -174,10 +174,10 @@ The tool detects and analyzes:
 | 🌐 **Network baseline** | Ping to gateway, Google (8.8.8.8), Cloudflare (1.1.1.1), ACT Cloud (187.110.160.254) and SIP server |
 | 📡 **ICMP connectivity** | Ping with loss and jitter analysis |
 | 🔌 **SIP port check** | UDP/5060 access verification via nmap |
-| 🎵 **RTP quality** | UDP traffic simulation on RTP port with hping3 — measures real loss and jitter |
+| 🎵 **RTP quality** | UDP traffic simulation on RTP port with hping3, measuring real loss and jitter |
 | 🤝 **SIP handshake** | SIP OPTIONS request and response analysis |
 | 🔑 **SIP registration** | REGISTER with configurable user, password and expiry |
-| 📞 **Test call** | INVITE to echo extension `*43` — verifies end-to-end signaling |
+| 📞 **Test call** | INVITE to echo extension `*43`, verifying end-to-end signaling |
 | ⏱ **Persistence** | Continuous monitoring with periodic OPTIONS for N minutes |
 | 🛣 **Traceroute** | Network path mapping to SIP server |
 | 📄 **TXT report** | Automatic export of full results to file |
@@ -187,9 +187,9 @@ The tool detects and analyzes:
 ### Test Levels
 
 ```
-[1] Basic     — Ping + SIP Port + SIP OPTIONS
-[2] Medium    — Basic + Baseline + RTP/Jitter + Traceroute
-[3] Full      — Medium + REGISTER + INVITE + Persistence + TLS
+[1] Basic     - Ping + SIP Port + SIP OPTIONS
+[2] Medium    - Basic + Baseline + RTP/Jitter + Traceroute
+[3] Full      - Medium + REGISTER + INVITE + Persistence + TLS
 ```
 
 ### Requirements
@@ -216,14 +216,14 @@ chmod +x sip_test.sh
 
 The script is fully interactive. At startup it asks for:
 
-1. **Language** — Português or English
-2. **SIP server IP** — e.g. `187.110.160.184`
-3. **SIP port** — default `5060`
-4. **Test level** — 1 (Basic), 2 (Medium) or 3 (Full)
-5. **Persistence test duration** — default 300 seconds
-6. **SIP credentials** — user, password and domain (required for REGISTER/INVITE)
-7. **Test call destination** — default `*43` (standard Asterisk echo extension)
-8. **Generate TXT report** — saved with timestamp in current directory
+1. **Language** - Português or English
+2. **SIP server IP** - e.g. `187.110.160.184`
+3. **SIP port** - default `5060`
+4. **Test level** - 1 (Basic), 2 (Medium) or 3 (Full)
+5. **Persistence test duration** - default 300 seconds
+6. **SIP credentials** - user, password and domain (required for REGISTER/INVITE)
+7. **Test call destination** - default `*43` (standard Asterisk echo extension)
+8. **Generate TXT report** - saved with timestamp in current directory
 
 ### NAT Traversal
 
@@ -245,7 +245,7 @@ Can be sent directly via email or messaging apps for remote analysis.
 
 ### RTP / Jitter Notes
 
-The jitter measurement uses `avg - min` RTT (rather than `max - min`) as a more stable proxy, resistant to outliers caused by OS ICMP rate limiting (`net.ipv4.icmp_ratelimit`). UDP "loss" at the RTP port is expected to appear high (30–80%) on servers that rate-limit ICMP Port Unreachable responses — this does **not** indicate actual RTP stream loss.
+The jitter measurement uses `avg - min` RTT (rather than `max - min`) as a more stable proxy, resistant to outliers caused by OS ICMP rate limiting (`net.ipv4.icmp_ratelimit`). UDP "loss" at the RTP port is expected to appear high (30-80%) on servers that rate-limit ICMP Port Unreachable responses. This does **not** indicate actual RTP stream loss.
 
 ---
 
@@ -253,21 +253,21 @@ The jitter measurement uses `avg - min` RTT (rather than `max - min`) as a more 
 
 ```
 sip_test.sh
-│
-├── install_deps()          — Verifica e instala dependências
-├── detect_local_ip()       — Detecta IP de saída via roteamento
-│
-├── test_baseline()         — Ping para gateway, DNS públicos, ACT Cloud, SIP
-├── test_ping()             — Ping detalhado para servidor SIP
-├── test_port_udp()         — nmap UDP 5060
-├── test_jitter()           — hping3 UDP para porta RTP (jitter/loss)
-├── test_traceroute()       — Traceroute até servidor SIP
-│
-├── test_sip_options()      — SIP OPTIONS (sipsak)
-├── test_register()         — SIP REGISTER com autenticação
-├── test_invite()           — SIP INVITE para *43 (echo test)
-├── test_sip_persistent()   — OPTIONS periódicos por N minutos
-└── test_tls()              — Handshake TLS/SRTP (openssl s_client)
+|
++-- install_deps()          Verifica e instala dependências
++-- detect_local_ip()       Detecta IP de saída via roteamento
+|
++-- test_baseline()         Ping para gateway, DNS públicos, ACT Cloud, SIP
++-- test_ping()             Ping detalhado para servidor SIP
++-- test_port_udp()         nmap UDP 5060
++-- test_jitter()           hping3 UDP para porta RTP (jitter/loss)
++-- test_traceroute()       Traceroute até servidor SIP
+|
++-- test_sip_options()      SIP OPTIONS (sipsak)
++-- test_register()         SIP REGISTER com autenticação
++-- test_invite()           SIP INVITE para *43 (echo test)
++-- test_sip_persistent()   OPTIONS periódicos por N minutos
++-- test_tls()              Handshake TLS/SRTP (openssl s_client)
 ```
 
 ---
