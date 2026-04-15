@@ -5,7 +5,7 @@
 ![Bash](https://img.shields.io/badge/Shell-Bash-4EAA25?style=for-the-badge&logo=gnubash&logoColor=white)
 ![Debian](https://img.shields.io/badge/Debian-Ubuntu-A81D33?style=for-the-badge&logo=debian&logoColor=white)
 ![SIP](https://img.shields.io/badge/Protocol-SIP-0078D7?style=for-the-badge)
-![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+![License](https://img.shields.io/badge/License-GPL%20v3-blue?style=for-the-badge)
 
 **Ferramenta interativa de diagnóstico completo de conectividade SIP.**  
 *Interactive tool for complete SIP connectivity diagnostics.*
@@ -274,4 +274,8 @@ sip_test.sh
 
 ## Licença / License
 
-MIT © ACT Tecnologia
+GPL v3 © ACT Tecnologia
+
+Uso e distribuição permitidos, mas qualquer modificação deve ser disponibilizada sob a mesma licença. Uso comercial do código por terceiros exige que o fonte permaneça aberto.
+
+Use and distribution are allowed, but any modification must be released under the same license. Commercial use of the code by third parties requires keeping the source open.
